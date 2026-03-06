@@ -1,0 +1,4 @@
+# Ignore all pulled issue exports; work from these locally but close via PRs.
+*
+!.gitignore
+!README.md
