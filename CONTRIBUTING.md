@@ -2,6 +2,10 @@
 
 Thanks for contributing. Please follow these guidelines so that contributions (including those from Cursor agents) stay consistent and reviewable.
 
+## Requirements
+
+- **Node.js 24** – The project requires Node.js 24 (see `package.json` `engines` and `.nvmrc`). Use `nvm use` (or your version manager) in the repo root to switch to the correct version.
+
 ## Workflow
 
 ### Branching
