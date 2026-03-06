@@ -2,33 +2,37 @@
 
 ## Overview
 
-This document describes the architecture, classes, and modules for a customizable battleship game. The game supports multiple players (human and computer), configurable board sizes, ship configurations, shot options, replay functionality, and an AI assistant for shot suggestions.
+This document describes the **target** architecture, classes, and modules for a customizable battleship game. The game supports multiple players (human and computer), configurable board sizes, ship configurations, shot options, replay functionality, and an AI assistant for shot suggestions.
 
 The system is designed with separation of concerns: game logic is separate from rendering, configuration is centralized, and advanced features are modular and optional.
 
-## Module Structure
+**Current repo:** The codebase is a **TypeScript/React** frontend (see [README](README.md) and [docs/design-decisions.md](docs/design-decisions.md)). The module structure below is language-agnostic; game logic may be implemented in TypeScript or in a separate backend (e.g. Python).
+
+## Module Structure (target design)
+
+Modules may be implemented as TypeScript (e.g. `cell.ts`) or Python (e.g. `cell.py`) depending on where the game logic lives.
 
 ```
 battleship/
-├── main.py              # Entry point - main() function
-├── config.py            # GameConfig, ShipConfig, PlayerConfig
-├── cell.py              # Cell class
-├── ship.py              # Ship class
-├── board.py             # Board class
-├── player.py            # Player base class
-├── ai_player.py         # AIPlayer (extends Player)
-├── shot.py              # Shot, ShotResult
-├── weapon.py            # Weapon, WeaponManager (optional)
-├── game.py              # Game main controller
-├── game_history.py      # GameHistory, GameAction (replay)
-├── shot_advisor.py      # ShotAdvisor (suggestions)
-├── ship_placer.py       # ShipPlacer (placement logic)
-└── renderer.py          # GameRenderer, SpriteManager
+├── main                 # Entry point - main()
+├── config               # GameConfig, ShipConfig, PlayerConfig
+├── cell                 # Cell class
+├── ship                 # Ship class
+├── board                # Board class
+├── player               # Player base class
+├── ai_player            # AIPlayer (extends Player)
+├── shot                 # Shot, ShotResult
+├── weapon               # Weapon, WeaponManager (optional)
+├── game                 # Game main controller
+├── game_history         # GameHistory, GameAction (replay)
+├── shot_advisor         # ShotAdvisor (suggestions)
+├── ship_placer          # ShipPlacer (placement logic)
+└── renderer             # GameRenderer, SpriteManager
 ```
 
 ## Core Classes
 
-### Cell (`cell.py`)
+### Cell (`cell`)
 
 **Purpose**: Represents a single cell/square on the game board.
 
@@ -53,7 +57,7 @@ battleship/
 
 ---
 
-### Ship (`ship.py`)
+### Ship (`ship`)
 
 **Purpose**: Represents a ship/boat on the board with its state and position.
 
@@ -82,7 +86,7 @@ battleship/
 
 ---
 
-### Board (`board.py`)
+### Board (`board`)
 
 **Purpose**: Represents a player's game board containing cells and ships.
 
@@ -111,7 +115,7 @@ battleship/
 
 ---
 
-### Player (`player.py`)
+### Player (`player`)
 
 **Purpose**: Base class representing a player (human or computer).
 
@@ -137,7 +141,7 @@ battleship/
 
 ---
 
-### GameConfig (`config.py`)
+### GameConfig (`config`)
 
 **Purpose**: Centralized configuration for all game settings and options.
 
@@ -169,7 +173,7 @@ battleship/
 
 ---
 
-### ShipConfig (`config.py`)
+### ShipConfig (`config`)
 
 **Purpose**: Configuration for a single ship type.
 
@@ -184,7 +188,7 @@ battleship/
 
 ---
 
-### PlayerConfig (`config.py`)
+### PlayerConfig (`config`)
 
 **Purpose**: Configuration for a single player.
 
@@ -199,7 +203,7 @@ battleship/
 
 ---
 
-### Game (`game.py`)
+### Game (`game`)
 
 **Purpose**: Main game controller that orchestrates the entire game flow.
 
@@ -238,7 +242,7 @@ battleship/
 
 ---
 
-### GameRenderer (`renderer.py`)
+### GameRenderer (`renderer`)
 
 **Purpose**: Handles all rendering and display of the game state.
 
@@ -265,7 +269,7 @@ battleship/
 
 ---
 
-### SpriteManager (`renderer.py`)
+### SpriteManager (`renderer`)
 
 **Purpose**: Manages sprite/image assets for different themes.
 
@@ -288,7 +292,7 @@ battleship/
 
 ## Advanced Classes
 
-### AIPlayer (`ai_player.py`)
+### AIPlayer (`ai_player`)
 
 **Purpose**: Computer-controlled player with configurable difficulty levels.
 
@@ -316,7 +320,7 @@ battleship/
 
 ---
 
-### Shot (`shot.py`)
+### Shot (`shot`)
 
 **Purpose**: Represents a single shot fired at the board.
 
@@ -337,7 +341,7 @@ battleship/
 
 ---
 
-### ShotResult (`shot.py`)
+### ShotResult (`shot`)
 
 **Purpose**: Result of a shot fired at the board.
 
@@ -353,7 +357,7 @@ battleship/
 
 ---
 
-### Weapon (`weapon.py`) - Optional
+### Weapon (`weapon`) – optional
 
 **Purpose**: Represents a weapon that can hit multiple squares (alternative to standard single-shot).
 
@@ -372,7 +376,7 @@ battleship/
 
 ---
 
-### WeaponManager (`weapon.py`) - Optional
+### WeaponManager (`weapon`) – optional
 
 **Purpose**: Manages available weapons.
 
@@ -385,7 +389,7 @@ battleship/
 
 ---
 
-### GameHistory (`game_history.py`)
+### GameHistory (`game_history`)
 
 **Purpose**: Tracks all game actions for replay functionality.
 
@@ -407,7 +411,7 @@ battleship/
 
 ---
 
-### GameAction (`game_history.py`)
+### GameAction (`game_history`)
 
 **Purpose**: Represents a single action in game history.
 
@@ -423,7 +427,7 @@ battleship/
 
 ---
 
-### ShotAdvisor (`shot_advisor.py`)
+### ShotAdvisor (`shot_advisor`)
 
 **Purpose**: Suggests optimal shot placements based on probability calculations.
 
@@ -450,7 +454,7 @@ battleship/
 
 ---
 
-### ShipPlacer (`ship_placer.py`)
+### ShipPlacer (`ship_placer`)
 
 **Purpose**: Handles ship placement logic and validation.
 
