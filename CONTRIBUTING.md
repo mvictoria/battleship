@@ -25,6 +25,10 @@ Every PR must include:
 | **How it was solved** | Approach and implementation details |
 | **Other methods considered** | Alternatives considered and why they were not chosen |
 
+## CI
+
+GitHub Actions runs on every push and pull request to `main`. The workflow runs **lint**, **test** (with coverage), and **build** in that order (fail-fast). If you push again on the same branch before the run finishes, the previous run is cancelled.
+
 ## Quality gates
 
 Before a PR is ready for merge:
