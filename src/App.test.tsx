@@ -8,4 +8,8 @@ describe('App', () => {
     render(<App />);
     expect(screen.getByRole('heading', { name: /battleship/i })).toBeInTheDocument();
   });
+
+  it('intentionally fails to verify CI fails on test failure', () => {
+    expect(true).toBe(false);
+  });
 });
