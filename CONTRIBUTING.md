@@ -14,6 +14,10 @@ Thanks for contributing. Please follow these guidelines so that contributions (i
   ```
 - Open a **Pull Request** for every change; nothing should be merged by pushing directly to `main`.
 
+### Working from issues locally
+
+You can pull GitHub issues into the `issues/` folder and work from them locally; close issues by merging PRs (e.g. “Fixes #123” in the PR). From the repo root, run `./scripts/pull-issues.sh [open|closed|all]` (requires [GitHub CLI](https://cli.github.com/) and `gh auth login`). See `issues/README.md` for details.
+
 ### Pull request content
 
 Every PR must include:
