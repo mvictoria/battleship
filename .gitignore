@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+
+# Build and output
+dist/
+build/
+*.local
+*.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and debug
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor and IDE
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test and coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Cursor and agent (state/cache only; .cursorrules and .cursorignore may be committed)
+.cursor/
+.agent/
+
+# Vite
+*.local
+
+# Misc
+*.bak
+*.tmp
+.cache/
