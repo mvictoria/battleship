@@ -12,7 +12,7 @@ STATE="${1:-open}"
 mkdir -p "$ISSUES_DIR"
 cd "$REPO_ROOT"
 
-if ! command -v gh &>/dev/null; then
+if [ ! -x "$(command -v gh)" ]; then
   echo "Error: GitHub CLI (gh) is not installed. Install it and run: gh auth login"
   exit 1
 fi
