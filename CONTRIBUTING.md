@@ -2,6 +2,10 @@
 
 Thanks for contributing. Please follow these guidelines so that contributions (including those from Cursor agents) stay consistent and reviewable.
 
+## Requirements
+
+- **Node.js 24** – The project requires Node.js 24 (see `package.json` `engines` and `.nvmrc`). Use `nvm use` (or your version manager) in the repo root to switch to the correct version.
+
 ## Workflow
 
 ### Branching
@@ -24,6 +28,10 @@ Every PR must include:
 | **Feature/issue** | Link or reference to the feature or issue |
 | **How it was solved** | Approach and implementation details |
 | **Other methods considered** | Alternatives considered and why they were not chosen |
+
+## CI
+
+GitHub Actions runs on every push and pull request to `main`. The workflow runs **lint**, **test** (with coverage), and **build** in that order (fail-fast). If you push again on the same branch before the run finishes, the previous run is cancelled.
 
 ## Quality gates
 
