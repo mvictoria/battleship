@@ -1,0 +1,123 @@
+# Cursor agent rules for this codebase
+
+You MUST follow every rule below. These rules apply to all agents working in this repository.
+
+---
+
+## 1. Branching: never work on main
+
+- You MUST NOT make commits on `main`, and MUST NOT push to `main`.
+- Before making any code changes, create a new branch from an up-to-date `main`:
+  - `git checkout main && git pull && git checkout -b <branch-name>`
+- Use a descriptive branch name, e.g. `feature/add-game-loop`, `fix/board-boundary-check`, or `docs/update-rules`.
+- All of your edits and commits MUST happen only on this branch.
+
+---
+
+## 2. Delivering work: always use a Pull Request
+
+- You MUST deliver your changes via a Pull Request (PR). Do not push your branch to `main`; open a PR and let a human merge.
+- The PR description (body) MUST include these four sections. Use the exact headings so they are easy to find:
+
+  **Description**  
+  What was done and why.
+
+  **Feature / issue**  
+  Link or reference to the feature or issue (e.g. issue number, or "implements idea.md: game loop").
+
+  **How it was solved**  
+  Clear explanation of the approach and implementation.
+
+  **Other methods considered**  
+  Alternatives you considered and why they were not chosen.
+
+- If you cannot open a PR yourself, your final response to the user MUST state that a PR must be opened with the above four sections filled in.
+
+---
+
+## 3. Tests: must pass, 100% coverage, do not remove tests
+
+- **Run tests before you consider the work done.** Discover the test command from the repo (e.g. `pytest`, `python -m pytest`, `make test`, or a script in `package.json` / `pyproject.toml`). Run it and fix any failures.
+- **Test coverage must be 100%** for the codebase (or for the code you add or change if the repo defines a different scope). Use the project’s coverage tool (e.g. `pytest-cov`, `coverage.py`) and ensure no uncovered lines remain before the PR is ready.
+- **Do not remove or delete existing tests** for the features you are building or modifying.
+  - You MAY add new tests.
+  - You MAY change a test only when the change is required for the test to correctly reflect the new or fixed behavior (e.g. updating an assertion). You must not change or remove a test merely because it fails or is inconvenient.
+  - If a test is wrong, obsolete, or should be removed: do NOT delete it and do NOT rewrite it to effectively remove coverage. Instead: (1) In the PR description, state that the test should be modified or removed and why, and (2) create an issue requesting that change if you have permission; otherwise, ask the user to create the issue. Reference that issue in the PR.
+- Before marking work complete, confirm: all tests pass and coverage meets the 100% requirement.
+
+---
+
+## 4. Linting: must pass
+
+- **Linting MUST pass** before the PR is ready. Find the project’s linter from config (e.g. `pyproject.toml`, `setup.cfg`, `.flake8`, `Makefile`, or `package.json`) and run it (e.g. `ruff check`, `flake8`, `pylint`, `npm run lint`). Fix every reported issue.
+- If the project uses pre-commit or CI, your changes MUST satisfy those checks.
+
+---
+
+## 5. Documentation: update when behavior or APIs change
+
+- If you change any **functionality** (APIs, behavior, configuration, or user-facing behavior), you MUST update the **relevant documentation** so it stays accurate.
+- “Relevant documentation” includes, as applicable: `README.md`, `architecture.md`, `CONTRIBUTING.md`, docstrings and module-level comments for changed code, and any other docs that describe the changed behavior.
+- Do not leave documentation outdated after a change.
+
+---
+
+## 6. Order of operations (workflow)
+
+1. Create a branch from `main` (see §1). Do not edit code on `main`.
+2. Implement changes on that branch.
+3. Run the test suite and the coverage check; fix until tests pass and coverage is 100%.
+4. Run the linter; fix until it passes.
+5. Update documentation for any functionality you changed.
+6. Open a PR with the four required sections in the description (§2). If a test could not be modified/removed by you, document that and the need for an issue in the PR.
+
+---
+
+## 7. Checklist before considering work done
+
+Before you tell the user the work is complete, confirm:
+
+- [ ] All work is on a branch created from `main`; no commits on `main`.
+- [ ] A PR is opened (or the user is told to open one) with Description, Feature/issue, How it was solved, Other methods considered.
+- [ ] All tests pass.
+- [ ] Test coverage is 100% (or meets the project’s defined coverage rule).
+- [ ] Linting passes.
+- [ ] Documentation is updated for any changed functionality.
+- [ ] No tests were removed; any needed test change is described in the PR and an issue created or requested.
+
+---
+
+## 8. Scope and focus
+
+- **One logical change per PR.** One feature, one fix, or one coherent refactor. Do not bundle unrelated changes; split into separate branches/PRs if the scope grows.
+- **Stay in scope.** Do not edit files or behavior that are unrelated to the task (no "while I'm here" refactors or style changes outside the changed feature unless the task explicitly asks for it). If you must touch unrelated code, say so in the PR and explain why.
+- **Call out breaking changes.** If your change breaks existing APIs, behavior, or config, state that clearly in the PR description under a **Breaking changes** or **Migration** section and describe what callers or users need to do.
+
+---
+
+## 9. Security and secrets
+
+- **Do not commit secrets.** No API keys, passwords, tokens, or credentials in code or config that is committed. Use environment variables, a secrets manager, or config that is listed in `.gitignore`.
+- **Do not log secrets or sensitive data.** Avoid logging passwords, tokens, or full credentials; redact or omit them.
+
+---
+
+## 10. Dependencies and code style
+
+- **Dependencies:** Do not add a new dependency without documenting in the PR why it is needed and why existing or stdlib options are insufficient. Match the project’s dependency format (e.g. `requirements.txt`, `pyproject.toml`) and versioning approach.
+- **Follow existing style.** Match the repo’s existing naming, structure, and idioms. Do not introduce a new style or framework without a clear reason in the PR.
+- **No leftover debug code.** Remove or replace temporary `print` statements, commented-out blocks, and debug flags before considering the work done. If you add a TODO, tie it to an issue or task if the project does that.
+
+---
+
+## 11. Commits and history
+
+- **Clear commit messages.** Use descriptive messages that explain what changed and why (e.g. "Add board boundary checks for ship placement" not "fix bug"). If the project uses conventional commits or another standard, follow it.
+- **Do not force-push** to a branch that others may have pulled or that is already the base of a PR, unless the task explicitly requires rewriting history and the user approves.
+
+---
+
+## 12. Verification and accuracy
+
+- **Verify before you add.** Confirm that any package, API, or import you use exists and is correct (e.g. check the project’s lockfile, docs, or source). Do not invent or assume APIs.
+- **Prefer repo conventions.** When the repo has an established pattern (e.g. for tests, config, or structure), follow it rather than introducing a different approach without justification in the PR.
