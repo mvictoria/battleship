@@ -6,6 +6,13 @@ Thanks for contributing. Please follow these guidelines so that contributions (i
 
 - **Node.js 24** – The project requires Node.js 24 (see `package.json` `engines` and `.nvmrc`). Use `nvm use` (or your version manager) in the repo root to switch to the correct version.
 
+## Tooling and layout
+
+- **Tests:** Vitest with `@vitest/coverage-v8`. Run tests: `npm run test` (watch) or `npm run test:coverage` (single run with coverage).
+- **Lint:** ESLint (TypeScript/React) via `eslint.config.js`. Run: `npm run lint`.
+- **Build:** `npm run build` (TypeScript + Vite).
+- **Layout:** App code under `src/`; tests are colocated (e.g. `src/App.test.tsx`) and shared setup in `src/test/`.
+
 ## Workflow
 
 ### Branching
@@ -32,6 +39,14 @@ Every PR must include:
 ## CI
 
 GitHub Actions runs on every push and pull request to `main`. The workflow runs **lint**, **test** (with coverage), and **build** in that order (fail-fast). If you push again on the same branch before the run finishes, the previous run is cancelled.
+
+**Run the same checks locally:**
+
+```bash
+npm run lint
+npm run test:coverage
+npm run build
+```
 
 ## Quality gates
 
